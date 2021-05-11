@@ -3,23 +3,23 @@ from .models import Recruitment
 
 
 def main():
-    df = pd.read_csv('student-info.csv')
+    df = pd.read_csv('info.csv')
     # print(df['Student Name'][0])
 
     for i in range(len(df)):
         # print(df['Student ID'][i],df['Student Name'][i],df['Email'][i],df['Section'][i])
-        id = df['id'][i]
+        reg = df['id'][i]
         name = df['name'][i]
         email = df['id'][i] + '@uap-bd.edu'
         phone = df['phone'][i]
         address = df['address'][i]
         blood = df['blood'][i]
         section = ''
-        if int(id) < 20101060:
+        if int(reg) < 20101060:
             section = 'A'
         else:
             section = 'B'
-        student = Recruitment(id=id,
+        student = Recruitment(reg=id,
                               name=name,
                               email=email,
                               phone=phone,

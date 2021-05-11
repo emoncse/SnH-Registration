@@ -3,7 +3,7 @@ from django.db import models
 
 # Create your models here.
 class Recruitment(models.Model):
-    id = models.CharField(max_length=8)
+    reg = models.CharField(primary_key=True, max_length=8)
     name = models.CharField(max_length=50)
     email = models.EmailField(max_length=100)
     phone = models.CharField(max_length=11)
@@ -16,7 +16,7 @@ class Recruitment(models.Model):
 
 
 class Apply(models.Model):
-    id = models.OneToOneField(Recruitment, on_delete=models.CASCADE)
+    reg = models.OneToOneField(Recruitment, on_delete=models.CASCADE)
     extra = models.CharField(max_length=500)
     interest = models.CharField(max_length=500)
     why = models.CharField(max_length=500)
