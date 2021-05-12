@@ -1,6 +1,7 @@
 from django.urls import path
 from registration import views
 urlpatterns = [
-    path('home/', views.home, name='home'),
-    path('', views.application, name='application'),
+    path('upload/', views.simple_upload),
+    path('', views.history, name='history'),
+    path('apply/', views.application, name='apply')
 ]

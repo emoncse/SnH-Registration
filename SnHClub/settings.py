@@ -37,6 +37,8 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'registration',
+    'import_export',
 ]
 
 MIDDLEWARE = [
@@ -126,8 +128,8 @@ EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 EMAIL_HOST = 'smtp.gmail.com'
 EMAIL_PORT = 587
 EMAIL_USE_TLS = True
-EMAIL_HOST_USER = 'snhclub@uap-bd.edu'
-EMAIL_HOST_PASSWORD = 'wdpqlsvxmgzzaneq'
+EMAIL_HOST_USER = 'snhclub.cseuap2000@gmail.com'
+EMAIL_HOST_PASSWORD = ''
 
 
 # Default primary key field type
