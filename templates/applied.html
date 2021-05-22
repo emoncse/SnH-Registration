@@ -1,0 +1,199 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+   <head>
+      <meta charset="utf-8">
+      <meta content="width=device-width, initial-scale=1.0" name="viewport">
+      <title>Member Recruitment - SnH Club</title>
+      <meta content="" name="description">
+      <meta content="" name="Software & Hardware Club, CSE UAP">
+
+	    <!-- Mobile Specific Metas -->
+	    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+	    <!-- Font-->
+	    <link rel="stylesheet" type="text/css" href="{% static 'css/montserrat-font.css' %}">
+	    <link rel="stylesheet" type="text/css" href="{% static 'fonts/material-design-iconic-font/css/material-design-iconic-font.min.css' %}">
+	    <!-- Main Style Css -->
+      <link rel="stylesheet" href="{% static 'css/style.css' %}"/>
+      <!-- Favicons -->
+      <link href="{% static 'fav/f.ico' %}" rel="icon">
+      <link href="{% static 'assets/img/apple-touch-icon.png' %} " rel="apple-touch-icon">
+      <!-- Google Fonts -->
+      <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Raleway:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
+      <!-- Vendor CSS Files -->
+      <link href="{% static 'assets/vendor/bootstrap/css/bootstrap.min.css' %}" rel="stylesheet">
+      <link href="{% static 'assets/vendor/icofont/icofont.min.css' %}" rel="stylesheet">
+      <link href="{% static 'assets/vendor/boxicons/css/boxicons.min.css' %}" rel="stylesheet">
+      <link href="{% static 'assets/vendor/animate.css/animate.min.css' %}" rel="stylesheet">
+      <link href="{% static 'assets/vendor/remixicon/remixicon.css' %}" rel="stylesheet">
+      <link href="{% static 'assets/vendor/line-awesome/css/line-awesome.min.css' %}" rel="stylesheet">
+      <link href="{% static 'assets/vendor/venobox/venobox.css' %}" rel="stylesheet">
+      <link href="{% static 'assets/vendor/owl.carousel/assets/owl.carousel.min.css' %}" rel="stylesheet">
+      <link href="{% static 'assets/vendor/aos/aos.css' %}" rel="stylesheet">
+      <!-- Template Main CSS File -->
+      <link href="{% static 'assets/css/style.css' %}" rel="stylesheet">
+       <link rel="stylesheet" type="text/css" href="{% static 'ss/css/montserrat-font.css' %}">
+	<link rel="stylesheet" type="text/css" href="{% static 'ss/fonts/material-design-iconic-font/css/material-design-iconic-font.min.css' %}">
+	<!-- Main Style Css -->
+       <style>
+           button, input {
+                  margin-top:35px;
+                  overflow: visible; // Show the overflow in Edge
+                }
+       </style>
+    <link rel="stylesheet" href="{% static 'ss/css/style.css' %}"/>
+
+   </head>
+   <body>
+      <!-- ======= Header ======= -->
+      <header id="header" class="fixed-top d-flex align-items-center ">
+         <div class="container d-flex align-items-center">
+            <div class="logo mr-auto">
+               <h1 id="logo"><a style="color: #01dbdf; margin-top:12px" href="{% url 'history' %}"><img src="{% static 'snh.png' %}" alt="logo" /> Software & Hardware Club</a></h1>
+               <!-- Uncomment below if you prefer to use an image logo -->
+               <!-- <a href="index.html"><img src="assets/img/logo.png" alt="" class="img-fluid"></a>-->
+            </div>
+            <nav class="nav-menu d-none d-lg-block">
+               <ul>
+                  <li class="active"><a href="{% url 'apply' %}">Home</a></li>
+                  <li class="active"><a href="{% url 'applicant' %}">Check Another</a></li>
+               </ul>
+            </nav>
+            <!-- .nav-menu -->
+         </div>
+      </header>
+      <!-- End Header -->
+      <main id="main">
+
+    <!-- ======= Breadcrumbs ======= -->
+    <section class="breadcrumbs">
+      <div class="container">
+
+        <div class="d-flex justify-content-between align-items-center">
+          <h2>Applied Member Information</h2>
+          <ol>
+            <li><a href="{% url 'applicantview' %}">Applicant Details</a></li>
+            <li>Applicant</li>
+          </ol>
+        </div>
+
+      </div>
+    </section><!-- End Breadcrumbs -->
+         <body class="form-v10">
+            {% block id %}
+            {% if open == 'closed' %}
+            <div class="page-content" style="height: 580px">
+               <div class="form-v10-content">
+                  <form class="form-detail" action="{% url 'apply' %}" method="POST" id="myform">
+                     {% csrf_token %}
+                     <div class="form-left">
+                        <div class="form-row">
+                           <br><br>
+                            <br><br>
+                           <input type="text" name="id" class="company" id="id" placeholder="Registration ID" required>
+                        </div>
+                     </div>
+                     <div class="form-right">
+                        <div class="form-row-last">
+                           <input type="submit" name="submit" class="register" value="Submit">
+                        </div>
+                     </div>
+                  </form>
+               </div>
+            </div>
+            {% endif %}
+            {% if open == 'open' %}
+            <div class="page-content" style="width: 1920px !important; height: auto">
+               <div class="form-v10-content">
+                  <form class="form-detail" action="{% url 'apply' %}" method="POST" id="myform">
+                      {% csrf_token %}
+                     <div class="form-left">
+                        <h2>Personal Information</h2>
+                        <div class="form-row">
+                           <input type="text" name="name" class="company" id="name" value="{{ name }}" readonly>
+                        </div>
+                        <div class="form-row">
+                           <input type="text" name="id" class="company" id="id" value="{{ rid }}" readonly>
+                        </div>
+                        <div class="form-row">
+                           <input type="text" name="university" class="company" id="university" value="University of Asia Pacific" readonly>
+                        </div>
+                        <div class="form-row">
+                            <input type="text" name="dept" class="company" id="dept" value="Dept of Computer Science & Engineering" readonly>
+                        </div>
+                        <div class="form-row">
+                           <input type="text" name="address" class="street" id="address" value="{{ address }}" readonly>
+                        </div>
+                        <div class="form-row">
+                           <input type="text" name="blood" class="street" id="blood" value="{{ blood }}" readonly>
+                        </div>
+                     </div>
+                     <div class="form-right">
+                        <h2>Contact Details</h2>
+                        <div class="form-row">
+                           <input type="text" name="extra" class="additional" id="extra" value="{{ extra }}" readonly>
+                        </div>
+                        <div class="form-row">
+                           <input type="text" name="interest" class="additional" id="interest" value="{{ interest }}" readonly>
+                        </div>
+                        <div class="form-row">
+                           <input type="text" name="why" class="additional" id="why" value="{{ why }}" readonly>
+                        </div>
+                        <div class="form-row">
+                           <input type="text" id="country" class="country" name="country" value="Bangladesh" readonly>
+                        </div>
+                        <div class="form-group">
+                           <div class="form-row form-row-1">
+                              <input type="text" id="code" class="code" name="code" value="+88" readonly>
+                           </div>
+                           <div class="form-row form-row-2">
+                              <input type="text" name="phone" class="phone" id="phone" value="{{ phone }}" readonly>
+                           </div>
+                        </div>
+                        <div class="form-row">
+                           <input type="text" name="email" id="email" class="input-text" required pattern="[^@]+@[^@]+.[a-zA-Z]{2,6}" value="{{ email }}" readonly>
+                        </div>
+                         <a type="submit" name="again" class="register" href="{% url 'applicant' %}" >
+                     </div>
+                  </form>
+               </div>
+            </div>
+            {% endif %}
+            {% endblock %}
+   </body>
+   </main><!-- End #main -->
+   <!-- ======= Footer ======= -->
+   <footer id="footer">
+      <div class="container">
+
+         <p></p>
+         <!-- <div class="social-links">
+            <a href="#" class="twitter"><i class="bx bxl-twitter"></i></a>
+            <a href="#" class="facebook"><i class="bx bxl-facebook"></i></a>
+            <a href="#" class="instagram"><i class="bx bxl-instagram"></i></a>
+            <a href="#" class="google-plus"><i class="bx bxl-skype"></i></a>
+            <a href="#" class="linkedin"><i class="bx bxl-linkedin"></i></a>
+         </div> -->
+         <div class="copyright">
+            &copy; Copyright <strong><span>Software & Hardware Club, CSE UAP</span></strong>.  All Rights Reserved
+         </div>
+         <div class="credits">
+            Designed & Developed by <a href="https://emon.com.bd/">Imran Nazir Emon</a>
+         </div>
+      </div>
+   </footer>
+   <!-- End Footer -->
+   <a href="#" class="back-to-top"><i class="ri-arrow-up-line"></i></a>
+   <!-- Vendor JS Files -->
+   <script src="{% static 'assets/vendor/jquery/jquery.min.js' %}"></script>
+   <script src="{% static 'assets/vendor/bootstrap/js/bootstrap.bundle.min.js' %}"></script>
+   <script src="{% static 'assets/vendor/jquery.easing/jquery.easing.min.js' %}"></script>
+   <script src="{% static 'assets/vendor/php-email-form/validate.js' %}"></script>
+   <script src="{% static 'assets/vendor/isotope-layout/isotope.pkgd.min.js' %}"></script>
+   <script src="{% static 'assets/vendor/venobox/venobox.min.js' %}"></script>
+   <script src="{% static 'assets/vendor/owl.carousel/owl.carousel.min.js' %}"></script>
+   <script src="{% static 'assets/vendor/aos/aos.js'%}"></script>
+   <!-- Template Main JS File -->
+   <script src="{% static 'assets/js/main.js' %}"></script>
+   </body>
+</html>

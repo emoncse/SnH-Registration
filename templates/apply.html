@@ -49,7 +49,7 @@
       <header id="header" class="fixed-top d-flex align-items-center ">
          <div class="container d-flex align-items-center">
             <div class="logo mr-auto">
-               <h1 class="text-light"><a href="{% url 'apply' %}">Software & Hardware Club</a></h1>
+               <h1 id="logo"><a style="color: #01dbdf; margin-top:12px" href="{% url 'history' %}"><img src="{% static 'snh.png' %}" alt="logo" /> Software & Hardware Club</a></h1>
                <!-- Uncomment below if you prefer to use an image logo -->
                <!-- <a href="index.html"><img src="assets/img/logo.png" alt="" class="img-fluid"></a>-->
             </div>
@@ -73,7 +73,7 @@
           <h2>Application Form</h2>
           <ol>
             <li><a href="{% url 'history' %}">History</a></li>
-            <li>Club History</li>
+            <li>Application Center</li>
           </ol>
         </div>
 
@@ -82,7 +82,7 @@
          <body class="form-v10">
             {% block id %}
             {% if open == 'closed' %}
-            <div class="page-content">
+            <div class="page-content" style="width: 1920px !important; height: 580px">
                <div class="form-v10-content">
                   <form class="form-detail" action="{% url 'apply' %}" method="POST" id="myform">
                      {% csrf_token %}
@@ -103,7 +103,7 @@
             </div>
             {% endif %}
             {% if open == 'open' %}
-            <div class="page-content">
+            <div class="page-content" style="height: auto">
                <div class="form-v10-content">
                   <form class="form-detail" action="{% url 'apply' %}" method="POST" id="myform">
                       {% csrf_token %}
@@ -156,7 +156,7 @@
                         <div class="form-checkbox">
                            <label class="container">
                               <p>I do accept the member recruitment's <a href="#" class="text">terms and conditions</a> of Software & Hardware Club.</p>
-                              <input type="checkbox" name="checkbox">
+                              <input type="checkbox" name="checkbox" required>
                               <span class="checkmark"></span>
                            </label>
                         </div>
