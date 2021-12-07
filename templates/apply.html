@@ -82,7 +82,7 @@
          <body class="form-v10">
             {% block id %}
             {% if open == 'closed' %}
-            <div class="page-content" style="width: 1920px !important; height: 580px">
+            <div class="page-content" style="height: auto">
                <div class="form-v10-content">
                   <form class="form-detail" action="{% url 'apply' %}" method="POST" id="myform">
                      {% csrf_token %}

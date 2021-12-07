@@ -16,10 +16,10 @@ def simple_upload(request):
         for data in imported_data:
             # print(data[0], data[1], data[2], data[3], data[4], data[5], data[6])
             value = Recruitment(name=data[1],
-                                email=data[2],
-                                reg=data[3],
-                                phone=data[4],
-                                blood=data[5],
+                                reg=data[2],
+                                email=data[3],
+                                blood=data[4],
+                                phone=data[5],
                                 address=data[6],
                                 )
             value.save()
@@ -36,17 +36,22 @@ def application(request):
     if request.method == 'POST':
         if request.POST['submit'] == 'Submit':
             mid = request.POST.get('id')
-            mid = '0' + mid
             try:
-                data = Recruitment.objects.filter(reg=mid)
+                data = Recruitment.objects.filter(reg__contains=mid)
             except Recruitment.DoesNotExist:
                 data = None
             if data is None:
                 return HttpResponse("Student not found. Please try again with a valid registration number. Go home -> "
                                     "https://snhclub.org/apply")
             name = data.get().name
-            rid = data.get().reg[1:]
-            email = data.get().email[1:]
+            rid = data.get().reg
+            if rid.startswith('0'):
+                rid = rid[1:]
+            else:
+                rid = rid[:-2]
+            email = data.get().email
+            if email.startswith('0'):
+                email = email[1:]
             phone = data.get().phone[:9] + '**'
             blood = 'Blood Group : ' + data.get().blood
             address = 'Address : ' + data.get().address
